@@ -246,11 +246,11 @@ namespace HeavenStrikeFizz
             if (Qcombo)
             {
                 var target = TargetSelector.GetTarget(Q.Range, TargetSelector.DamageType.Magical);
-                if (Q.IsReady() && target.IsValidTarget() && !target.IsZombie)
-                    Q.Cast(target);
                 if (Q.IsReady() && R.IsReady() && target.IsValidTarget() && !target.IsZombie)
                     Q.Cast(target);
                     R.Cast(target);
+                if (Q.IsReady() && target.IsValidTarget() && !target.IsZombie)
+                    Q.Cast(target);
             }
 
             if (Ecombo)
@@ -333,7 +333,7 @@ namespace HeavenStrikeFizz
                     {
                         var x = R.GetPrediction(target).CastPosition;
                         var y = R.GetPrediction(target).CollisionObjects;
-                        if (!y.Any(z => z.IsChampion()) && Player.Distance(x) <= R.Range)
+                        if (!y.Any(z => z.IsChampion()) && Player.Distance(x) <= R.Range-200)
                         {
                             R.Cast(x);
                         }
