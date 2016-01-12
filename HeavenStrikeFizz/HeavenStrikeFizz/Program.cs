@@ -248,7 +248,11 @@ namespace HeavenStrikeFizz
                 var target = TargetSelector.GetTarget(Q.Range, TargetSelector.DamageType.Magical);
                 if (Q.IsReady() && target.IsValidTarget() && !target.IsZombie)
                     Q.Cast(target);
+                if (Q.IsReady() && R.IsReady() && target.IsValidTarget() && !target.IsZombie)
+                    Q.Cast(target);
+                    R.Cast(target);
             }
+
             if (Ecombo)
             {
                 // E1  slow target
